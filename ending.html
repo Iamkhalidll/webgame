@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="ending.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container" >
+        <h1>winner</h1>
+        <h3></h3>
+        <table style="display: none;">
+         <tr>
+             <th></th>
+         </tr>
+        <tr>
+            <td><img src=""></td>
+        </tr>
+        <tr>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+        </tr>
+      </table>
+      <h3></h3>
+      <table style="display: none;" class="table">
+               <tr>
+                   <th></th>
+                </tr>
+              <tr>
+                  <td><img src=""></td>
+              </tr>
+              <tr>
+                  <td></td>
+              </tr>
+              <tr>
+                  <td></td>
+              </tr>
+              <tr>
+                  <td></td>
+              </tr>
+              <tr>
+                  <td></td>
+              </tr>
+              <tr>
+                  <td></td>
+              </tr>
+            </table>
+            <a href="index.html"> start over</a>
+    </div>
+    <script>
+        (function winnerLoser(){
+            if (JSON.parse(localStorage.getItem("user1")).answer > JSON.parse(localStorage.getItem("user2")).answer1) {
+               document.querySelectorAll("h3")[0].textContent="winner"
+               document.querySelector("table").style.display="inline-block"
+               document.querySelectorAll("th")[0].textContent= "score: " + JSON.parse(localStorage.getItem("user1")).answer
+               document.querySelectorAll("img")[0].src = JSON.parse(localStorage.getItem("user1")).img;
+               document.querySelectorAll("td")[1].innerHTML = JSON.parse(localStorage.getItem("user1")).name;
+               document.querySelectorAll("td")[2].innerHTML = JSON.parse(localStorage.getItem("user1")).username;
+               document.querySelectorAll("td")[3].innerHTML = JSON.parse(localStorage.getItem("user1")).followers;
+               document.querySelectorAll("td")[4].innerHTML = JSON.parse(localStorage.getItem("user1")).following;
+               document.querySelectorAll("td")[5].innerHTML = JSON.parse(localStorage.getItem("user1")).repo;
+               document.querySelectorAll("h3")[1].textContent = "loser"
+               document.querySelector(".table").style.display="inline-block"
+               document.querySelectorAll("th")[1].textContent= "score:" + JSON.parse(localStorage.getItem("user2")).answer1
+               document.querySelectorAll("img")[1].src = JSON.parse(localStorage.getItem("user2")).img;
+               document.querySelectorAll("td")[7].innerHTML = JSON.parse(localStorage.getItem("user2")).name;
+               document.querySelectorAll("td")[8].innerHTML = JSON.parse(localStorage.getItem("user2")).username;
+               document.querySelectorAll("td")[9].innerHTML = JSON.parse(localStorage.getItem("user2")).followers;
+               document.querySelectorAll("td")[10].innerHTML = JSON.parse(localStorage.getItem("user2")).following;
+               document.querySelectorAll("td")[11].innerHTML = JSON.parse(localStorage.getItem("user2")).repo
+                
+            } else {
+               document.querySelectorAll("h3")[0].textContent="winner"
+               document.querySelector(".table").style.display="inline-block"
+               document.querySelectorAll("th")[0].textContent= "score:" +JSON.parse(localStorage.getItem("user2")).answer1;
+               document.querySelectorAll("img")[0].src = JSON.parse(localStorage.getItem("user2")).img;
+               document.querySelectorAll("td")[1].innerHTML = JSON.parse(localStorage.getItem("user2")).name;
+               document.querySelectorAll("td")[2].innerHTML = JSON.parse(localStorage.getItem("user2")).username;
+               document.querySelectorAll("td")[3].innerHTML = JSON.parse(localStorage.getItem("user2")).followers;
+               document.querySelectorAll("td")[4].innerHTML = JSON.parse(localStorage.getItem("user2")).following;
+               document.querySelectorAll("td")[5].innerHTML = JSON.parse(localStorage.getItem("user2")).repo
+               document.querySelectorAll("h3")[1].textContent = "loser"
+               document.querySelector("table").style.display="inline-block"
+               document.querySelectorAll("th")[1].textContent= "score: " + JSON.parse(localStorage.getItem("user1")).answer
+               document.querySelectorAll("img")[1].src = JSON.parse(localStorage.getItem("user1")).img;
+               document.querySelectorAll("td")[7].innerHTML = JSON.parse(localStorage.getItem("user1")).name;
+               document.querySelectorAll("td")[8].innerHTML = JSON.parse(localStorage.getItem("user1")).username;
+               document.querySelectorAll("td")[9].innerHTML = JSON.parse(localStorage.getItem("user1")).followers;
+               document.querySelectorAll("td")[10].innerHTML = JSON.parse(localStorage.getItem("user1")).following;
+               document.querySelectorAll("td")[11].innerHTML = JSON.parse(localStorage.getItem("user1")).repo;
+               
+               localStorage.clear();
+                
+            }
+        })();
+        
+               
+              
+    </script>
+</body>
+</html>

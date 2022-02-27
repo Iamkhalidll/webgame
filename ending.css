@@ -1,0 +1,35 @@
+body{
+    padding:3%;
+    font-size: 16px;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+}
+.container{
+    padding: 2%;
+}
+h3,h1{
+    margin:2px;
+}
+table{
+   width:40%;
+   max-width:350px;
+}
+
+button,a{
+    text-decoration: none;
+    text-align: center;
+     display:inline-block;
+     margin:6px 37%;
+     color: white;
+     background-color: rgb(2, 92, 2);
+     border-radius:7%;
+    }
+    button:hover,a:hover{
+        background-color:green;
+    }
+th,td{
+    border: 1px solid rgba(128, 128, 128, 0.623);
+}
+img{
+    width: 110px;
+}

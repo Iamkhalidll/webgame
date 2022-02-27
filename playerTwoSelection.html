@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player two selection</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Player Two</h1>
+        <form >
+            <input type="text" id="playerTwo" required placeholder="Git User">
+            <button>continue</button>
+        </form> 
+        <table style="display:none;">
+              <tr>
+                  <th><img src=""></th>
+              </tr>
+              <tr>
+                  <td></td>
+              </tr>
+              <tr>
+                  <td></td>
+              </tr>
+              <tr>
+                  <td></td>
+              </tr>
+              <tr>
+                  <td></td>
+              </tr>
+              <tr>
+                  <td></td>
+              </tr>
+            </table>
+    </div> 
+    <script>
+       document.forms[0].addEventListener("submit",function(e){
+           e.preventDefault();
+           let input = document.getElementById("playerTwo").value;
+           let url2 =`https://api.github.com/users/` + input;
+           fetch(url2)
+           .then(response=>response.json().then(data=>{
+               let name1 = "name: " +data.name 
+               let username1 = "username: " + data.login
+               let id1  = data.id
+               let img1 = `https://avatars.githubusercontent.com/u/`+ id1 + `?v=4`
+               let repo1 ="Public repo: " +data.public_repos;
+               let followers1 = "follower: " + data.followers;
+               let following1 = "following "  + data.following;
+               let a = Number.parseFloat(data.followers)
+              let b = Number.parseFloat(data.following)
+              let c = Number.parseFloat(data.public_repos)
+              let score1 = a + b + (c/2);
+              console.log(a,b,c);
+              let answer1 = eval(score1);
+               let person1 ={
+                   name: name1,
+                   username :username1,
+                   img:img1,
+                   repo:repo1,
+                   followers:followers1,
+                   following:following1,
+                   answer1:answer1
+               }
+               localStorage.setItem("user2",JSON.stringify(person1));
+               document.querySelector("table").style.display="inline-block"
+               document.querySelector("img").src = JSON.parse(localStorage.getItem("user2")).img;
+               document.querySelectorAll("td")[0].innerHTML = JSON.parse(localStorage.getItem("user2")).name;
+               document.querySelectorAll("td")[1].innerHTML = JSON.parse(localStorage.getItem("user2")).username;
+               document.querySelectorAll("td")[2].innerHTML = JSON.parse(localStorage.getItem("user2")).followers;
+               document.querySelectorAll("td")[3].innerHTML = JSON.parse(localStorage.getItem("user2")).following;
+               document.querySelectorAll("td")[4].innerHTML = JSON.parse(localStorage.getItem("user2")).repo;
+               window.location.replace("initial.html");
+           }
+           ))
+           })
+    </script>
+</body>
+</html>
