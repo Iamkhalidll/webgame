@@ -36,33 +36,32 @@
             </table>
     </div> 
     <script>
-       document.forms[0].addEventListener("submit",function(e){
+       document.forms[0].addEventListener("submit",async function(e){
            e.preventDefault();
            let input = document.getElementById("playerTwo").value;
            let url2 =`https://api.github.com/users/` + input;
-           fetch(url2)
-           .then(response=>response.json().then(data=>{
-               let name1 = "name: " +data.name 
-               let username1 = "username: " + data.login
-               let id1  = data.id
-               let img1 = `https://avatars.githubusercontent.com/u/`+ id1 + `?v=4`
-               let repo1 ="Public repo: " +data.public_repos;
-               let followers1 = "follower: " + data.followers;
-               let following1 = "following "  + data.following;
-               let a = Number.parseFloat(data.followers)
-              let b = Number.parseFloat(data.following)
-              let c = Number.parseFloat(data.public_repos)
-              let score1 = a + b + (c/2);
-              console.log(a,b,c);
-              let answer1 = eval(score1);
+           let response = await fetch(url2)
+           let people = await response.json();
+           console.log(people)
+           let {name,login,avatar_url,followers,following,public_repos} = people
+           console.log(name,login,avatar_url,followers,following,public_repos)
+           
+if( login==null){
+    alert("invalid username")
+    
+}else{
+    let score = Number(followers) + Number(following)+ (Number(public_repos)/2);
+              console.log(score);
+              let answer = eval(score);
+              console.log(eval(score));
                let person1 ={
-                   name: name1,
-                   username :username1,
-                   img:img1,
-                   repo:repo1,
-                   followers:followers1,
-                   following:following1,
-                   answer1:answer1
+                   name:`name: ${name}`,
+                   username :`username: ${login}`,
+                   img:avatar_url,
+                   repo:public_repos,
+                   followers:followers,
+                   following:following,
+                   answer:answer
                }
                localStorage.setItem("user2",JSON.stringify(person1));
                document.querySelector("table").style.display="inline-block"
@@ -74,7 +73,7 @@
                document.querySelectorAll("td")[4].innerHTML = JSON.parse(localStorage.getItem("user2")).repo;
                window.location.replace("initial.html");
            }
-           ))
+           
            })
     </script>
 </body>
